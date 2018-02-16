@@ -50,7 +50,7 @@ pub fn lcm(m: u64, n: u64, primes: &Primes) -> Option<u64> {
     Some(lcm)
 }
 
-
+//find all primes under max, returning a Vec<u64>. this is not a particularly efficient implementation.
 pub fn primes_under(max: u64) -> Primes {
     let mut primes = Primes::new();
     if max < 2 {
@@ -78,18 +78,21 @@ pub fn primes_under(max: u64) -> Primes {
 }
 
 
-
+///find the prime factors of a positive integer, if any. 0 and 1 are considered to have no prime factorization.
 pub fn factors(n: u64, primes: &Primes) -> Option<Counter>{
-
+    if n == 0 || n == 1 {
+        return None
+    }
     let mut factors = Counter::new();
     let mut n = n;
 
     for p in primes {
+        let p = *p;
         while n % p == 0 {
-            *factors.entry(*p).or_insert(0) += 1;
+            *factors.entry(p).or_insert(0) += 1;
             n /= p;
         }
-        if p > &n {
+        if p > n {
             return Some(factors); //we know the prime factorization for sure
         }
     };
