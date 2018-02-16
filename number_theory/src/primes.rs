@@ -1,6 +1,6 @@
 use std::collections;
-type Counter = collections::HashMap<u64, u32>;
-type Primes = Vec<u64>;
+pub type Counter = collections::HashMap<u64, u32>;
+pub type Primes = Vec<u64>;
 
 pub fn union(a: &Counter, b: &Counter) -> Counter {
     let mut union = a.clone();
@@ -17,7 +17,7 @@ pub fn union(a: &Counter, b: &Counter) -> Counter {
 
 
 pub fn intersection(a: &Counter, b: &Counter) -> Counter {
-    let mut intersection = collections::HashMap::new();
+    let mut intersection = Counter::new();
     for (k, v) in a {
         if b.contains_key(k) {
             let min = *v.min(&b[k]);
@@ -52,7 +52,7 @@ pub fn lcm(m: u64, n: u64, primes: &Primes) -> Option<u64> {
 
 
 pub fn primes_under(max: u64) -> Primes {
-    let mut primes = Vec::new();
+    let mut primes = Primes::new();
     if max < 2 {
         return primes    
     }
@@ -81,16 +81,16 @@ pub fn primes_under(max: u64) -> Primes {
 
 pub fn factors(n: u64, primes: &Primes) -> Option<Counter>{
 
-    let mut factors = collections::HashMap::new();
+    let mut factors = Counter::new();
     let mut n = n;
 
     for p in primes {
         while n % p == 0 {
-            *factors.entry(n).or_insert(0) += 1;
+            *factors.entry(*p).or_insert(0) += 1;
             n /= p;
         }
         if p > &n {
-            return Some(factors) //we know the prime factorization for sure
+            return Some(factors); //we know the prime factorization for sure
         }
     };
     None // n is larger than our largest known prime. it could be prime, but it could also be a sufficiently large composite number
