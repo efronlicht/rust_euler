@@ -1,0 +1,7 @@
+[package]
+name = "euler_007"
+version = "0.1.0"
+authors = ["efron_licht <efron.python@gmail.com>"]
+
+[dependencies]
+number_theory = {git = 'https://github.com/efronlicht/numbertheory', version = '0.1.2'}
