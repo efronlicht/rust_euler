@@ -1,4 +1,23 @@
 [[package]]
 name = "euler_005"
 version = "0.1.0"
+dependencies = [
+ "number_theory 0.1.1 (git+https://github.com/efronlicht/numbertheory)",
+]
 
+[[package]]
+name = "maplit"
+version = "1.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "number_theory"
+version = "0.1.1"
+source = "git+https://github.com/efronlicht/numbertheory#fe6f51d22cb63ee5ce656c52fc06399a8b0e5080"
+dependencies = [
+ "maplit 1.0.1 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[metadata]
+"checksum maplit 1.0.1 (registry+https://github.com/rust-lang/crates.io-index)" = "08cbb6b4fef96b6d77bfc40ec491b1690c779e77b05cd9f07f787ed376fd4c43"
+"checksum number_theory 0.1.1 (git+https://github.com/efronlicht/numbertheory)" = "<none>"
