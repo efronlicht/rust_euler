@@ -1,0 +1,6 @@
+[package]
+name = "euler_008"
+version = "0.1.0"
+authors = ["efron_licht <efron.python@gmail.com>"]
+
+[dependencies]
